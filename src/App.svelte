@@ -1,13 +1,19 @@
 <script>
-	import SynTable from "./components/SynTable.svelte";
-	export let name;
+	import Tabs from "./components/Tabs.svelte";
 
-	let tabs = ["eng", "spa", "fra"];
-	let activeTab = "eng";
+	let tabs = ["ENG", "SPA", "FRA"];
+	let activeTab = "ENG";
 </script>
 
 <main>
-	<SynTable {activeTab} {tabs} ></SynTable>
+	<Tabs {activeTab} {tabs} on:tabChange={(e) => activeTab = e.detail}/>
+	{#if activeTab === "ENG"}
+		 <h2>Hello from Tab {activeTab}</h2>
+	{:else if activeTab === "SPA"}
+		 <h2>Hello from Tab {activeTab}</h2>
+	{:else}
+		 <h2>Hello from Tab {activeTab}</h2>
+	{/if}
 </main>
 
 <style>
